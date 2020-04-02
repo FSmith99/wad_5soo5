@@ -1,0 +1,5 @@
+*.pyc
+_pycache__/
+db.sqlite3
+*.key
+thumbs.db

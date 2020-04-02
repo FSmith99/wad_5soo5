@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Search
+{% endblock %}
+
+{% block body_block %}
+<div class="row">
+    <div class="col-6 align-left">
+        <i id="search-icon" class="fas fa-search"></i>
+        <input id="user-input" placeholder="Search">
+    </div>
+
+    <div id="replaceable-content" class="col-6">
+        {% include 'search-results-partial.html' %}
+
+    </div>
+</div>
+{% endblock %}

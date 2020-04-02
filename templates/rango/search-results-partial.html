@@ -1,0 +1,19 @@
+        {% if reviewers %}
+        <ul>
+            {% for reviewer in reviewers %}
+                <li><a href="{% url 'rango:show_reviewer' reviewer.slug %}">{{reviewer.displayName}}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No reviewers found.</p>
+        {% endif %}
+
+        {% if films %}
+        <ul>
+            {% for film in films %}
+                <li><a href ="{% url 'rango:show_film' film.slug %}">{{film.title}}</a></li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <p>No films found.</p>
+        {% endif %}

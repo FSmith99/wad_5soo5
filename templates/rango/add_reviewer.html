@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Reviewer Upgrade Registry
+{% endblock %}
+
+{% block body_block %}
+    {{user}}
+    <h2>Register</h2>
+   <form id="reviewer_form" method="post" action="{% url 'rango:add_reviewer' user %}" enctype="multipart/form-data">
+       {% csrf_token %}
+       {% for hidden in form.hidden_fields %}
+            {{hidden.errors}}
+            {{hidden}}
+       {% endfor %}
+       {% for field in form.visible_fields %}
+            {{ field.errors}}
+            {{ field.help_text }}
+            {{ field }}
+            </br>
+       {% endfor %}
+
+       <input type = "submit" name = "submit" value="Register" />
+   </form>
+
+
+{% endblock %}

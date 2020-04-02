@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    Homepage
+{% endblock %}
+
+{% block body_block %}
+    {% if user.is_authenticated %}
+    <strong> Logged in as {{user}}</strong>
+    {% endif %}
+    <h2>Highest Rated by Reviewers</h2>
+    {% if films %}
+        <ul>
+            {% for film in films %}
+                <li>
+                    <a href="{% url 'rango:show_film' film.slug%}">{{ film.title }} : [{{ film.rating1 }} {{film.rating2}}/ 5]</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>There are no films</strong>
+    {% endif %}
+
+    <h2>Recent reviews</h2>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <a href="{% url 'rango:show_reviewer' review.reviewerID.slug%}">{{review.reviewerID}}</a>
+                    left a review for: <a href="{% url 'rango:show_film' review.fkID.slug %}">{{review.fkID}}</a>.
+                    At {{review.date}}
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <strong>No recent reviews</strong>
+    {% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block title_block %}
+    {{reviewer.displayName}}
+{% endblock %}
+
+{% block body_block %}
+    {% if reviewer %}
+    <h2>{{reviewer}}</h2>
+        {% if user == reviewer.user %}
+            Welcome to your profile, {{user}}.</p>
+            <a href = "{% url 'rango:add_reviewer' user %}">Edit Profile</a>
+        {% endif %}
+
+        {% if reviewer.profilePicture %}
+            </p><img src="{{reviewer.profilePicture.url}}"/>
+        {% endif %}
+        </p> User: {{reviewer.displayName}}
+        </p> Member since: {{reviewer.user.date_joined}}
+        </p> Number of reviews : {{reviews.count}}
+    <h2>Recent reviews</h2>
+    {% if reviews %}
+        <ul>
+            {% for review in reviews %}
+                <li>
+                    <strong>Reviewed : <a href="{% url 'rango:show_film' review.fkID.slug %}">{{review.fkID}}</a>. At {{review.date}}</strong>
+                    </br>-{{review.mainBody}} [{{review.rating}}/5]
+                </li>
+            {% endfor %}
+        </ul>
+        {% else %}
+            <strong>No recent reviews</strong>
+        {% endif %}
+    {% else %}
+        <strong>This reviewer does not exist yet.</strong></br>
+
+        {% if user.is_reviewer %}
+            <a href="{% url 'rango:add_reviewer' user %}">Create or edit your reviewer profile here.</a>
+        {% endif %}
+
+    {% endif %}
+
+
+
+{% endblock %}

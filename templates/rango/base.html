@@ -1,0 +1,65 @@
+
+<!DOCTYPE html>
+
+{% load staticfiles %}
+{% load rango_template_tags %}
+
+<html>
+    <head lang="en">
+        <link rel="stylesheet" href="{% static 'base.css' %}">
+        <meta charset="UTF-8">
+        <title>
+            4Sof5 -
+            {% block title_block %}
+                BASE
+            {% endblock %}
+        </title>
+
+
+        <script src="{% static 'javascript/jquery-3.4.1.min.js' %}"></script>
+
+
+
+    </head>
+
+    <body>
+
+        <div>
+        <ul id = "nav">
+            <li><a href="{% url 'rango:about' %}">About</a></li>
+            <li><a href="{% url 'rango:home' %}">Home</a></li>
+            <li><a href="{% url 'rango:search' %}">Search</a></li>
+            {% if user.is_reviewer %}
+                <li style="float:right"><a href="{% url 'rango:show_reviewer' user %}">My Reviewer Page</a></li>
+            {% endif %}
+            {% if user.is_admin %}
+                <li><a href = "{% url 'rango:add_film' %}">Add a New Film</a></li>
+            {% endif %}
+            {% if user.is_authenticated %}
+
+                <li style="float:right"><a href="{% url 'rango:logout' %}">Logout</a></li>
+            {% else %}
+                <li style="float:right"><a href="{% url 'rango:login' %}">Login</a></li>
+                <li style="float:right"><a href="{% url 'rango:register' %}">Register</a></li>
+            {% endif %}
+        </ul>
+    </div>
+
+        <div>
+            {% block body_block %}
+            {% endblock %}
+        </div>
+
+
+    {% block footer %}
+        <script type="text/javascript" src="{% static 'javascript/main.js' %}"></script>
+        <script type="text/javascript" src="{%static 'jquery.activeNavigation.js' %}"></script>
+	    <script type="text/javascript">
+        $(document).ready(function(){
+        $(document).activeNavigation("#nav")
+        });
+        </script>
+
+    {% endblock %}
+    </body>
+</html>
