@@ -93,6 +93,8 @@ body{
 .pageBody img{
    float: right;
    margin: auto;
+   max-width:300px;
+   max-height:300px;
 }
 
 .reviewBody{
