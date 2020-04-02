@@ -1,5 +1,5 @@
 body{
-
+    background-color: gray;
 }
 
 #nav{
@@ -19,11 +19,10 @@ body{
 
 #nav li a{
     display: block;
-    color: while;
+    color: white;
     text-align: centre;
     padding: 14px 16px;
-    text_decoration: none;
-    color: #FFF
+    text-decoration: none;
 }
 
 #nav li a:hover{
@@ -33,3 +32,74 @@ body{
 #nav li.active a{
     background-color: #4CAF50;
 }
+
+.column{
+  margin: auto;
+  width: 40%;
+  border: 2px solid #333;
+  padding: 10px;
+  background-color: white;
+
+}
+
+.row{
+    clear:both;
+    text-align: centre;
+}
+
+.column h2{
+    text-decoration: underline;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+  background-color: white;
+
+}
+
+
+
+
+
+#user-input{
+    width: 50%;
+
+}
+
+.search{
+    text-align: center;
+  border: 3px solid #333;
+  background-color: white;
+  padding: 10px;
+}
+
+.search p{
+
+  margin: auto;
+  width: 60%;
+  padding: 10px;
+  text-align: center;
+
+}
+
+.pageBody{
+  margin: auto;
+  width: 40%;
+  border: 2px solid #333;
+  padding: 10px;
+  background-color: white;
+     overflow: auto;
+}
+
+.pageBody img{
+   float: right;
+   margin: auto;
+}
+
+.reviewBody{
+  margin: auto;
+  width: 40%;
+  border: 2px solid #333;
+  padding: 10px;
+  background-color: white;
+}
+

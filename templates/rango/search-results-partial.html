@@ -1,13 +1,21 @@
-        {% if reviewers %}
+
+<div class="column">
+    <h3>Reviewers:</h3>
+    {% if reviewers %}
         <ul>
             {% for reviewer in reviewers %}
-                <li><a href="{% url 'rango:show_reviewer' reviewer.slug %}">{{reviewer.displayName}}</a></li>
+            <li><a href="{% url 'rango:show_reviewer' reviewer.slug %}">{{reviewer.displayName}}</a></li>
             {% endfor %}
         </ul>
         {% else %}
             <p>No reviewers found.</p>
         {% endif %}
 
+</div>
+
+<div class="column">
+
+        <h3>Films:</h3>
         {% if films %}
         <ul>
             {% for film in films %}
@@ -17,3 +25,4 @@
         {% else %}
             <p>No films found.</p>
         {% endif %}
+</div>

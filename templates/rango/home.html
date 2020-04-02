@@ -5,10 +5,18 @@
 {% endblock %}
 
 {% block body_block %}
-    {% if user.is_authenticated %}
-    <strong> Logged in as {{user}}</strong>
-    {% endif %}
-    <h2>Highest Rated by Reviewers</h2>
+
+    <div class="pageHead">
+
+        {% if user.is_authenticated %}
+        <strong> <font color="white"> Logged in as {{user}} {{user.reviewer.displayName}}</font></strong>
+        {% endif %}
+
+    </div>
+
+<div class="row">
+    <div class="column">
+    <h2>Highest Rated by Reviewers:</h2>
     {% if films %}
         <ul>
             {% for film in films %}
@@ -20,8 +28,10 @@
     {% else %}
         <strong>There are no films</strong>
     {% endif %}
+        </div>
 
-    <h2>Recent reviews</h2>
+    <div class="column">
+    <h2>Recent reviews:</h2>
     {% if reviews %}
         <ul>
             {% for review in reviews %}
@@ -35,6 +45,9 @@
     {% else %}
         <strong>No recent reviews</strong>
     {% endif %}
+    </div>
+
+    </div>
 
 
 {% endblock %}

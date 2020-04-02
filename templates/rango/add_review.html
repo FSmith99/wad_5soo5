@@ -5,8 +5,7 @@
 {% endblock %}
 
 {% block body_block %}
-    {{user}}
-    <h2>Register</h2>
+    <div class = "column">
     {% if reviewer %}
         <strong>Error. You have already reviewed {{film}}.</strong>
     {% else %}
@@ -28,6 +27,7 @@
        <input type = "submit" name = "submit" value="Submit Review" />
    </form>
     {% endif %}
+        </div>
 
 
 {% endblock %}
